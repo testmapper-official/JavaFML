@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FMLI_App</string>
+    <string name="main">Main</string>
+    <string name="services">Services</string>
+    <string name="add_stuff">Add Stuff</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile">Profile</string>
+</resources>
