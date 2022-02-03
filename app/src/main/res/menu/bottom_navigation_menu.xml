@@ -4,25 +4,26 @@
         android:id="@+id/homeFragment"
         android:enabled="true"
         android:icon="@drawable/nav_main"
-        android:title=""/>
+        android:title="@string/main"/>
     <item
         android:id="@+id/serviceFragment"
         android:enabled="true"
         android:icon="@drawable/nav_services"
-        android:title=""/>
+        android:title="@string/services"/>
     <item
         android:id="@+id/page_add"
         android:enabled="true"
         android:icon="@drawable/nav_add"
+
         android:title=""/>
     <item
         android:id="@+id/notificationsFragment"
         android:enabled="true"
         android:icon="@drawable/nav_notifications"
-        android:title=""/>
+        android:title="@string/notifications"/>
     <item
         android:id="@+id/profileFragment"
         android:enabled="true"
         android:icon="@drawable/nav_profile"
-        android:title=""/>
+        android:title="@string/profile"/>
 </menu>

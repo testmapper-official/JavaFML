@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">FMLI_App</string>
-    <string name="main">Main</string>
-    <string name="services">Services</string>
-    <string name="add_stuff">Add Stuff</string>
-    <string name="notifications">Notifications</string>
-    <string name="profile">Profile</string>
+    <string name="main">Главная</string>
+    <string name="services">Сервисы</string>
+    <string name="notifications">Уведомления</string>
+    <string name="profile">Профиль</string>
+    <string name="samplename"><t>@sample</t></string>
 </resources>
