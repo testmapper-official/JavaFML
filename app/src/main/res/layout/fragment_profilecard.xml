@@ -3,27 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/horizontalScrollView"
     android:layout_width="match_parent"
-    android:layout_height="75dp"
+    android:layout_height="wrap_content"
     android:scrollbars="none">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_gravity="center">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="125dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/posts">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="5dp">
 
                 <TextView
                     android:id="@+id/posts_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="32sp"
+                    style="@android:style/TextAppearance.DeviceDefault.Large"
                     android:textColor="@color/darkteal"
                     android:textAlignment="center"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -33,27 +34,28 @@
                     android:layout_height="wrap_content"
                     android:text="POSTS"
                     android:textAlignment="center"
-                    android:textColor="@color/darkpurple"
-                    style="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textColor="@color/gray"
+                    style="@android:style/TextAppearance.DeviceDefault.Small"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/posts_count" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:layout_width="125dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/subscribed"
             android:layout_toEndOf="@+id/posts">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="5dp">
 
                 <TextView
                     android:id="@+id/subscribed_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="32sp"
+                    style="@android:style/TextAppearance.DeviceDefault.Large"
                     android:textColor="@color/darkteal"
                     android:textAlignment="center"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -63,27 +65,28 @@
                     android:layout_height="wrap_content"
                     android:text="SUBSCRIBED"
                     android:textAlignment="center"
-                    android:textColor="@color/darkpurple"
-                    style="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textColor="@color/gray"
+                    style="@android:style/TextAppearance.DeviceDefault.Small"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/subscribed_count" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:layout_width="125dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/subscribers"
             android:layout_toEndOf="@+id/subscribed">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="5dp">
 
                 <TextView
                     android:id="@+id/subscribers_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="32sp"
+                    style="@android:style/TextAppearance.DeviceDefault.Large"
                     android:textColor="@color/darkteal"
                     android:textAlignment="center"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -93,27 +96,28 @@
                     android:layout_height="wrap_content"
                     android:text="SUBSCRIBERS"
                     android:textAlignment="center"
-                    style="@android:style/TextAppearance.DeviceDefault.Medium"
-                    android:textColor="@color/darkpurple"
+                    style="@android:style/TextAppearance.DeviceDefault.Small"
+                    android:textColor="@color/gray"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/subscribers_count" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:layout_width="125dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/likes"
             android:layout_toEndOf="@+id/subscribers">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="5dp">
 
                 <TextView
                     android:id="@+id/likes_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="32sp"
+                    style="@android:style/TextAppearance.DeviceDefault.Large"
                     android:textColor="@color/darkteal"
                     android:textAlignment="center"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -123,27 +127,28 @@
                     android:layout_height="wrap_content"
                     android:text="LIKES"
                     android:textAlignment="center"
-                    style="@android:style/TextAppearance.DeviceDefault.Medium"
-                    android:textColor="@color/darkpurple"
+                    style="@android:style/TextAppearance.DeviceDefault.Small"
+                    android:textColor="@color/gray"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/likes_count" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:layout_width="125dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/comments"
             android:layout_toEndOf="@+id/likes">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="5dp">
 
                 <TextView
                     android:id="@+id/comments_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="32sp"
+                    style="@android:style/TextAppearance.DeviceDefault.Large"
                     android:textColor="@color/darkteal"
                     android:textAlignment="center"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -153,8 +158,8 @@
                     android:layout_height="wrap_content"
                     android:text="COMMENTS"
                     android:textAlignment="center"
-                    style="@android:style/TextAppearance.DeviceDefault.Medium"
-                    android:textColor="@color/darkpurple"
+                    style="@android:style/TextAppearance.DeviceDefault.Small"
+                    android:textColor="@color/gray"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/comments_count" />
             </androidx.constraintlayout.widget.ConstraintLayout>

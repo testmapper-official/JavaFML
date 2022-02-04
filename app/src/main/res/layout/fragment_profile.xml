@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="125dp"
+        android:layout_height="150dp"
         android:background="@color/teal_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,7 @@
         android:id="@+id/cardView"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_margin="5dp"
+        android:layout_marginBottom="15dp"
         android:elevation="10dp"
 
         app:cardCornerRadius="100dp"
@@ -37,40 +37,31 @@
 
     <TextView
         android:id="@+id/nickname"
+        style="@android:style/TextAppearance.DeviceDefault.Medium"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingStart="20dp"
-        android:paddingTop="5dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center"
         android:text="@string/samplename"
-        android:textColor="@color/ceal"
-        android:textSize="24sp"
+        android:textColor="@color/darkpurple"
+        app:layout_constraintBottom_toBottomOf="@+id/banner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1sp"
-        android:background="@color/darkteal"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nickname"
-        tools:ignore="SmallSp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <fragment
         android:id="@+id/profilecard"
         android:layout_marginTop="5dp"
         android:name="com.example.fmli_app.ProfileCardFragment"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        app:layout_constraintTop_toBottomOf="@+id/nickname" />
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/banner" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1sp"
         android:background="@color/darkteal"
+        android:layout_margin="1sp"
 
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilecard"
         tools:ignore="SmallSp" />
 
