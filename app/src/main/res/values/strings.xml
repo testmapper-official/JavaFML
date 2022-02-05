@@ -1,8 +1,16 @@
 <resources>
-    <string name="app_name">FMLI_App</string>
+    <string name="app_name">FML</string>
     <string name="main">Главная</string>
     <string name="services">Сервисы</string>
     <string name="notifications">Уведомления</string>
     <string name="profile">Профиль</string>
-    <string name="samplename"><t>@sample</t></string>
+    <string name="samplename"><i>@sample</i></string>
+    <string name="profiledescription"><b><i>О СЕБЕ</i></b></string>
+    <string name="posts">СТАТЬИ</string>
+    <string name="subscribed">ПОДПИСКИ</string>
+    <string name="subscribers">ПОДПИСАНО</string>
+    <string name="likes">НРАВИТСЯ</string>
+    <string name="comments">КОММЕНТАРИИ</string>
+    <string name="validnumber">null</string>
+    <string name="details_description">Нет данных</string>
 </resources>

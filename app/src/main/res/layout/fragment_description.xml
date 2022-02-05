@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5sp">
+
+    <TextView
+        android:id="@+id/tag_description"
+        style="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="@string/profiledescription"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/edit_description"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="10dp"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/tag_description"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:layout_width="100sp"
+        android:layout_height="2sp"
+        android:background="@color/black"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tag_description"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/details_description"
+        style="@android:style/TextAppearance.DeviceDefault.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="@string/details_description"
+        android:textColor="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/tag_description" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
