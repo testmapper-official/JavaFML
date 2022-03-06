@@ -13,4 +13,37 @@
     <string name="comments">КОММЕНТАРИИ</string>
     <string name="validnumber">null</string>
     <string name="details_description">Нет данных</string>
+    <string name="empty_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Phasellus rutrum, sem nec aliquet consequat, mauris odio pretium diam, sed ullamcorper
+        purus leo vestibulum nisi. Morbi mollis quis mauris id pellentesque. Nunc blandit nibh
+        at diam hendrerit iaculis. Nunc rhoncus pellentesque metus, non imperdiet enim. Vivamus
+        sodales id nisi ut sodales. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Morbi ipsum massa, maximus ut placerat quis, rhoncus non magna.</string>
+    <string-array name="forbes">
+        <item>Bill Gates</item>
+        <item>Warren Buffett</item>
+        <item>Jeff Bezos</item>
+        <item>Amancio Ortega</item>
+        <item>Mark Zuckerberg</item>
+        <item>Bill Gates</item>
+        <item>Warren Buffett</item>
+        <item>Jeff Bezos</item>
+        <item>Amancio Ortega</item>
+        <item>Mark Zuckerberg</item>
+        <item>Bill Gates</item>
+        <item>Warren Buffett</item>
+        <item>Jeff Bezos</item>
+        <item>Amancio Ortega</item>
+        <item>Mark Zuckerberg</item>
+        <item>Bill Gates</item>
+        <item>Warren Buffett</item>
+        <item>Jeff Bezos</item>
+        <item>Amancio Ortega</item>
+        <item>Mark Zuckerberg</item>
+        <item>Bill Gates</item>
+        <item>Warren Buffett</item>
+        <item>Jeff Bezos</item>
+        <item>Amancio Ortega</item>
+        <item>Mark Zuckerberg</item>
+    </string-array>
 </resources>
