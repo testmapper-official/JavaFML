@@ -1,4 +1,4 @@
-package com.example.fmli_app;
+package com.example.fmli_app.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.fmli_app.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 

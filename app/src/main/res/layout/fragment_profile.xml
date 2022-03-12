@@ -50,7 +50,7 @@
 
     <fragment
         android:id="@+id/profilecard"
-        android:name="com.example.fmli_app.ProfileCardFragment"
+        android:name="com.example.fmli_app.Fragment.Profile.ProfileCardFragment"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
@@ -67,7 +67,7 @@
 
     <fragment
         android:id="@+id/description"
-        android:name="com.example.fmli_app.DescriptionFragment"
+        android:name="com.example.fmli_app.Fragment.Profile.DescriptionFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

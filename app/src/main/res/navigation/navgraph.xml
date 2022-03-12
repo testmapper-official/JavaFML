@@ -6,18 +6,18 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.fmli_app.HomeFragment"
+        android:name="com.example.fmli_app.Fragment.Home.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/serviceFragment"
-        android:name="com.example.fmli_app.ServiceFragment"
+        android:name="com.example.fmli_app.Fragment.Service.ServiceFragment"
         android:label="ServiceFragment" />
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.example.fmli_app.NotificationsFragment"
+        android:name="com.example.fmli_app.Fragment.Notifications.NotificationsFragment"
         android:label="NotificationsFragment" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.fmli_app.ProfileFragment"
+        android:name="com.example.fmli_app.Fragment.Profile.ProfileFragment"
         android:label="ProfileFragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.fmli_app;
+package com.example.fmli_app.DB.users;
 
 public class User {
     private final long id;

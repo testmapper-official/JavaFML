@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FMLI_App">
         <activity
-            android:name=".SplashActivity"
+            android:name=".Activity.SplashActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".Activity.MainActivity"/>
     </application>
 
 </manifest>

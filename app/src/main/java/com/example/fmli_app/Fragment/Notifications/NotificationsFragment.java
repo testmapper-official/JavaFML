@@ -1,4 +1,4 @@
-package com.example.fmli_app;
+package com.example.fmli_app.Fragment.Notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,8 +10,12 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.fmli_app.DB.notifications.DatabaseNotification;
+import com.example.fmli_app.DB.notifications.NotificationAdapter;
+import com.example.fmli_app.DB.notifications.NotificationItem;
+import com.example.fmli_app.R;
+
 import java.util.ArrayList;
-import java.util.Date;
 
 public class NotificationsFragment extends Fragment {
 

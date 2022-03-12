@@ -1,4 +1,4 @@
-package com.example.fmli_app;
+package com.example.fmli_app.DB.notifications;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.fmli_app.R;
 
 import java.util.ArrayList;
 

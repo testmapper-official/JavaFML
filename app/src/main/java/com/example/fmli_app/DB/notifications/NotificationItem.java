@@ -1,5 +1,7 @@
-package com.example.fmli_app;
+package com.example.fmli_app.DB.notifications;
 
+
+import com.example.fmli_app.R;
 
 public class NotificationItem {
     private final long id;

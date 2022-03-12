@@ -1,15 +1,16 @@
-package com.example.fmli_app;
+package com.example.fmli_app.DB.notifications;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.fmli_app.DB.DBInformation;
+import com.example.fmli_app.DB.notifications.DatabaseNotification;
+
 public class NotificationOpenHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "app_database3.db";
-    public static final int DATABASE_VERSION = 1;
 
     public NotificationOpenHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DBInformation.DATABASE_NAME, null, DBInformation.DATABASE_VERSION);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.fmli_app;
+package com.example.fmli_app.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.fmli_app.R;
 
 public class testFragment extends Fragment {
     Button btn;
