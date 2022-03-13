@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.fmli_app.DB.notifications.DatabaseNotification;
+import com.example.fmli_app.DB.Database;
 import com.example.fmli_app.DB.notifications.NotificationAdapter;
 import com.example.fmli_app.DB.notifications.NotificationItem;
 import com.example.fmli_app.R;
@@ -24,7 +24,7 @@ public class NotificationsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_notifications, container, false);
 
         // Подключение к базе данных
-        DatabaseNotification db = new DatabaseNotification(getContext());
+        Database db = new Database(getContext());
 
 //        db.clearDatabase();
 //        Date newDate = new Date(System.currentTimeMillis());
@@ -32,7 +32,7 @@ public class NotificationsFragment extends Fragment {
 //        db.insert(new NotificationItem(1, 2, getContext().getString(R.string.empty_text), newDate.toString()));
 
         // Инициализаци ListView фрагмента уведомлений
-        ArrayList<NotificationItem> data = db.selectAll();
+        ArrayList<NotificationItem> data = db.selectAllNotifications();
 
         ListView notificationView = view.findViewById(R.id.notification_list);
         NotificationAdapter arrayAdapter = new NotificationAdapter(getContext(), data);
