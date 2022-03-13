@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FML</string>
+    <string name="app_name">FmlApp</string>
     <string name="main">Главная</string>
     <string name="services">Сервисы</string>
     <string name="notifications">Уведомления</string>
@@ -19,31 +19,8 @@
         at diam hendrerit iaculis. Nunc rhoncus pellentesque metus, non imperdiet enim. Vivamus
         sodales id nisi ut sodales. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Morbi ipsum massa, maximus ut placerat quis, rhoncus non magna.</string>
-    <string-array name="forbes">
-        <item>Bill Gates</item>
-        <item>Warren Buffett</item>
-        <item>Jeff Bezos</item>
-        <item>Amancio Ortega</item>
-        <item>Mark Zuckerberg</item>
-        <item>Bill Gates</item>
-        <item>Warren Buffett</item>
-        <item>Jeff Bezos</item>
-        <item>Amancio Ortega</item>
-        <item>Mark Zuckerberg</item>
-        <item>Bill Gates</item>
-        <item>Warren Buffett</item>
-        <item>Jeff Bezos</item>
-        <item>Amancio Ortega</item>
-        <item>Mark Zuckerberg</item>
-        <item>Bill Gates</item>
-        <item>Warren Buffett</item>
-        <item>Jeff Bezos</item>
-        <item>Amancio Ortega</item>
-        <item>Mark Zuckerberg</item>
-        <item>Bill Gates</item>
-        <item>Warren Buffett</item>
-        <item>Jeff Bezos</item>
-        <item>Amancio Ortega</item>
-        <item>Mark Zuckerberg</item>
-    </string-array>
+    <string name="enter">Войти</string>
+    <string name="password">Пароль</string>
+    <string name="emailphone">Email или телефон</string>
+    <string name="register">Создать новую учетную запись</string>
 </resources>

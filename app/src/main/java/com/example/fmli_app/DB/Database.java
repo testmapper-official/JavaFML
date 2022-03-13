@@ -19,7 +19,6 @@ public class Database {
     public static final String TABLE_NAME_NEWS = "news";
     // Названия полей таблицы users базы данных
     public static final String TABLE_NAME_USERS_COLUMN_ID = "id";
-    public static final String TABLE_NAME_USERS_COLUMN_LOGIN = "login";
     public static final String TABLE_NAME_USERS_COLUMN_PASSWORD = "password";
     public static final String TABLE_NAME_USERS_COLUMN_EMAIL = "email";
     public static final String TABLE_NAME_USERS_COLUMN_NUMBER = "number";
@@ -56,7 +55,6 @@ public class Database {
     // Добавление пользователя User в таблицу базы данных
     public long insert(User user) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(TABLE_NAME_USERS_COLUMN_LOGIN, user.getLogin());
         contentValues.put(TABLE_NAME_USERS_COLUMN_PASSWORD, user.getPassword());
         contentValues.put(TABLE_NAME_USERS_COLUMN_EMAIL, user.getEmail());
         contentValues.put(TABLE_NAME_USERS_COLUMN_NUMBER, user.getNumber());
@@ -125,24 +123,25 @@ public class Database {
     }
 
     // Взять пользователя User из таблицы users в базе данных
-    public User selectUser(String login, String password) {
+    public User selectUser(String email, String number, String password) {
         Cursor cursor = dataBase.rawQuery("SELECT *" +
                         " FROM " + TABLE_NAME_USERS +
-                        " WHERE (" + TABLE_NAME_USERS_COLUMN_LOGIN + "=" + '"' + login + '"' +
+                        " WHERE ((" + TABLE_NAME_USERS_COLUMN_EMAIL + "=" + '"' + email + '"' +
+                        " OR " + TABLE_NAME_USERS_COLUMN_NUMBER + "=" + '"' + number + "\")" +
                         " AND " + TABLE_NAME_USERS_COLUMN_PASSWORD + "=" + '"' + password + "\")",
                 null);
         cursor.moveToFirst();
         if (!cursor.isAfterLast()) {
             long id = cursor.getLong(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_ID));
-            String email = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_EMAIL));
-            String number = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_NUMBER));
+            email = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_EMAIL));
+            number = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_NUMBER));
             String birthday = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_BIRTHDAY));
             String about_me = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_ABOUT));
             String avatar_url = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_AVATAR));
             String banner_url = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_BANNER));
             String creation_date = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_DATE));
             int permission = cursor.getInt(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_PERMISSION));
-            return new User(id, login, password, email, number, about_me, avatar_url, banner_url, creation_date,
+            return new User(id, password, email, number, about_me, avatar_url, banner_url, creation_date,
                     birthday, permission);
         }
         return null;
@@ -157,7 +156,6 @@ public class Database {
         if (!cursor.isAfterLast()) {
             do {
                 long id = cursor.getLong(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_ID));
-                String login = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_LOGIN));
                 String password = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_PASSWORD));
                 String email = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_EMAIL));
                 String number = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_NUMBER));
@@ -167,7 +165,7 @@ public class Database {
                 String banner_url = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_BANNER));
                 String creation_date = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_DATE));
                 int permission = cursor.getInt(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_PERMISSION));
-                userItems.add(new User(id, login, password, email, number, about_me, avatar_url, banner_url,
+                userItems.add(new User(id, password, email, number, about_me, avatar_url, banner_url,
                         creation_date, birthday, permission));
             } while (cursor.moveToNext());
         }

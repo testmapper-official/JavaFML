@@ -15,7 +15,8 @@ public class SplashActivity extends AppCompatActivity {
     private final int SPLASH_DISPLAY_LENGTH = 1;
 
     SharedPreferences sharedPreferences;
-    final String LOGIN = "hash_user_login54";
+    final String EMAIL = "hash_user_email54";
+    final String NUMBER = "hash_user_number13";
     final String PASSWORD = "hash_user_password81";
 
     @Override
@@ -30,15 +31,13 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(this, AuthActivity.class);
             sharedPreferences = getPreferences(MODE_PRIVATE);
-            String savedLogin = sharedPreferences.getString(LOGIN, "");
+            String savedEmail = sharedPreferences.getString(EMAIL, "");
+            String savedNumber = sharedPreferences.getString(NUMBER, "");
             String savedPassword = sharedPreferences.getString(PASSWORD, "");
 
-            savedLogin = "123";
-            savedPassword = "123";
-
             // Если пользователь найден, то переходит к MainActivity
-            User user = db.selectUser(savedLogin, savedPassword);
-            if (user == null) {
+            User user = db.selectUser(savedEmail, savedNumber, savedPassword);
+            if (user != null) {
                 intent = new Intent(this, MainActivity.class);
             }
 

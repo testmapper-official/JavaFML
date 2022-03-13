@@ -23,7 +23,8 @@ public class AuthActivity extends AppCompatActivity {
     EditText editTextStr, editTextNum;
     Button btnSave, btnLoad;
     SharedPreferences sharedPreferences;
-    final String LOGIN = "hash_user_login54";
+    final String EMAIL = "hash_user_email54";
+    final String NUMBER = "hash_user_number13";
     final String PASSWORD = "hash_user_password81";
 
     @Override

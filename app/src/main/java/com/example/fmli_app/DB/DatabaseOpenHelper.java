@@ -33,9 +33,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     public void createUsersTable(SQLiteDatabase sqLiteDatabase) {
         String query = "CREATE TABLE " + TABLE_NAME_USERS + " (" +
                 TABLE_NAME_USERS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                TABLE_NAME_USERS_COLUMN_LOGIN + " TEXT NOT NULL UNIQUE, " +
                 TABLE_NAME_USERS_COLUMN_PASSWORD + " TEXT NOT NULL, " +
-                TABLE_NAME_USERS_COLUMN_EMAIL + " TEXT NOT NULL, " +
+                TABLE_NAME_USERS_COLUMN_EMAIL + " TEXT, " +
                 TABLE_NAME_USERS_COLUMN_NUMBER + " TEXT, " +
                 TABLE_NAME_USERS_COLUMN_BIRTHDAY + " DATE, " +
                 TABLE_NAME_USERS_COLUMN_ABOUT + " TEXT, " +

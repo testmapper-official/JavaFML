@@ -5,12 +5,13 @@
     <!-- Цвет фона -->
     <item android:drawable="@android:color/white" />
 
-    <!-- Лого приложения - 200dp версия иконки приложения -->
+    <!-- Лого приложения - 108dp версия иконки приложения -->
     <item>
 
         <bitmap
             android:gravity="center"
-            android:src="@drawable/fml" />
+            android:src="@drawable/icon"
+            />
 
     </item>
 
