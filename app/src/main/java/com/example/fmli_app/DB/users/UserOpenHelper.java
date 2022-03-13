@@ -15,19 +15,12 @@ public class UserOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-//        public static final String COLUMN_ID = "id";
-//        public static final String COLUMN_LOGIN = "login";
-//        public static final String COLUMN_PASSWORD = "password";
-//        public static final String COLUMN_BIRTHDAY = "birthday";
-//        public static final String COLUMN_ABOUT = "about_me";
-//        public static final String COLUMN_AVATAR = "avatar_url";
-//        public static final String COLUMN_BANNER = "banner_url";
-//        public static final String COLUMN_PERMISSION = "permission";
-//        public static final String COLUMN_DATE = "creation_date";
-        String query = "CREATE TABLE " + DatabaseNotification.TABLE_NAME + " (" +
+        String query = "CREATE TABLE " + DatabaseUsers.TABLE_NAME + " (" +
                 DatabaseUsers.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                DatabaseUsers.COLUMN_LOGIN + " TEXT, " +
-                DatabaseUsers.COLUMN_PASSWORD + " TEXT, " +
+                DatabaseUsers.COLUMN_LOGIN + " TEXT NOT NULL UNIQUE, " +
+                DatabaseUsers.COLUMN_PASSWORD + " TEXT NOT NULL, " +
+                DatabaseUsers.COLUMN_EMAIL + " TEXT NOT NULL, " +
+                DatabaseUsers.COLUMN_NUMBER + " TEXT, " +
                 DatabaseUsers.COLUMN_BIRTHDAY + " DATE, " +
                 DatabaseUsers.COLUMN_ABOUT + " TEXT, " +
                 DatabaseUsers.COLUMN_AVATAR + " TEXT, " +

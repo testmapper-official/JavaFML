@@ -4,11 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
-import com.example.fmli_app.DB.notifications.DatabaseNotification;
-import com.example.fmli_app.DB.notifications.NotificationItem;
-import com.example.fmli_app.DB.notifications.NotificationOpenHelper;
-
 import java.util.ArrayList;
 
 public class DatabaseUsers {
@@ -17,6 +12,8 @@ public class DatabaseUsers {
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_LOGIN = "login";
     public static final String COLUMN_PASSWORD = "password";
+    public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_NUMBER = "number";
     public static final String COLUMN_BIRTHDAY = "birthday";
     public static final String COLUMN_ABOUT = "about_me";
     public static final String COLUMN_AVATAR = "avatar_url";
@@ -26,7 +23,7 @@ public class DatabaseUsers {
     private final SQLiteDatabase dataBase;
 
     public DatabaseUsers(Context context) {
-        NotificationOpenHelper openHelper = new NotificationOpenHelper(context);
+        UserOpenHelper openHelper = new UserOpenHelper(context);
         dataBase = openHelper.getWritableDatabase();
     }
 
@@ -35,6 +32,8 @@ public class DatabaseUsers {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseUsers.COLUMN_LOGIN, user.getLogin());
         contentValues.put(DatabaseUsers.COLUMN_PASSWORD, user.getPassword());
+        contentValues.put(DatabaseUsers.COLUMN_EMAIL, user.getEmail());
+        contentValues.put(DatabaseUsers.COLUMN_NUMBER, user.getNumber());
         contentValues.put(DatabaseUsers.COLUMN_BIRTHDAY, user.getBirthday());
         contentValues.put(DatabaseUsers.COLUMN_ABOUT, user.getAbout_me());
         contentValues.put(DatabaseUsers.COLUMN_AVATAR, user.getAvatar_url());
@@ -54,19 +53,22 @@ public class DatabaseUsers {
     // Взять пользователя из таблицы базы данных
     public User selectUser(String login, String password) {
         Cursor cursor = dataBase.rawQuery("SELECT *" +
-                " WHERE " + DatabaseUsers.COLUMN_LOGIN + "=" + login +
-                " AND " + DatabaseUsers.COLUMN_PASSWORD + "=" + password +
-                " FROM " + DatabaseUsers.TABLE_NAME, null);
+                " FROM " + DatabaseUsers.TABLE_NAME +
+                " WHERE (" + DatabaseUsers.COLUMN_LOGIN + "=" + '"' + login + '"' +
+                " AND " + DatabaseUsers.COLUMN_PASSWORD + "=" + '"' + password + "\")",
+                null);
         cursor.moveToFirst();
         if (!cursor.isAfterLast()) {
             long id = cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_ID));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_EMAIL));
+            String number = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_NUMBER));
             String birthday = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_BIRTHDAY));
             String about_me = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_ABOUT));
             String avatar_url = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_AVATAR));
             String banner_url = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_BANNER));
             String creation_date = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_DATE));
             int permission = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_PERMISSION));
-            return new User(id, login, password, about_me, avatar_url, banner_url, creation_date,
+            return new User(id, login, password, email, number, about_me, avatar_url, banner_url, creation_date,
                     birthday, permission);
         }
         return null;
@@ -83,13 +85,15 @@ public class DatabaseUsers {
                 long id = cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_ID));
                 String login = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_LOGIN));
                 String password = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_PASSWORD));
+                String email = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_EMAIL));
+                String number = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_NUMBER));
                 String birthday = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_BIRTHDAY));
                 String about_me = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_ABOUT));
                 String avatar_url = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_AVATAR));
                 String banner_url = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_BANNER));
                 String creation_date = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_DATE));
                 int permission = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseUsers.COLUMN_PERMISSION));
-                userItems.add(new User(id, login, password, about_me, avatar_url, banner_url,
+                userItems.add(new User(id, login, password, email, number, about_me, avatar_url, banner_url,
                         creation_date, birthday, permission));
             } while (cursor.moveToNext());
         }

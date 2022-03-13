@@ -2,7 +2,7 @@ package com.example.fmli_app.DB.users;
 
 public class User {
     private final long id;
-    private String login, password, birthday, about_me, avatar_url, banner_url;
+    private String login, password, birthday, about_me, avatar_url, banner_url, email, number;
     private final String creation_date;
     private int permission;
     private Object[] likes;
@@ -10,11 +10,13 @@ public class User {
     private User[] subscribers;
     private User[] subscribed;
 
-    public User(long id, String login, String password, String about_me, String avatar_url,
+    public User(long id, String login, String password, String email, String number, String about_me, String avatar_url,
                 String banner_url, String creation_date, String birthday, int permission) {
         this.id = id;
         this.login = login;
         this.password = password;
+        this.email = email;
+        this.number = number;
         this.about_me = about_me;
         this.creation_date = creation_date;
         this.avatar_url = avatar_url;
@@ -27,9 +29,9 @@ public class User {
         this.subscribed = new User[]{};
     }
 
-    private User(String login, String password, String about_me, String avatar_url,
+    private User(String login, String password, String email, String number, String about_me, String avatar_url,
                  String banner_url, String creation_date, String birthday, int permission) {
-        this(-1, login, password, about_me, avatar_url, banner_url, creation_date, birthday,
+        this(-1, login, password, email, number, about_me, avatar_url, banner_url, creation_date, birthday,
                 permission);
     }
 
@@ -87,6 +89,22 @@ public class User {
 
     public void setBanner_url(String banner_url) {
         this.banner_url = banner_url;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public int getPermission() {
