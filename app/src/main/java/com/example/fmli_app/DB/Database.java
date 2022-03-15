@@ -173,4 +173,18 @@ public class Database {
         return userItems;
     }
 
+    // Существует ли user с таким логином (email или телефон)
+    public boolean hasUser(String login) {
+        Cursor cursor = dataBase.rawQuery("SELECT id" +
+                        " FROM " + TABLE_NAME_USERS +
+                        " WHERE (" + TABLE_NAME_USERS_COLUMN_EMAIL + "=" + '"' + login + '"' +
+                        " OR " + TABLE_NAME_USERS_COLUMN_NUMBER + "=" + '"' + login + "\")",
+                null);
+        cursor.moveToFirst();
+
+        // Если нашлись такие пользователи, или курсор имеет список найденных пользователей
+        return !cursor.isAfterLast();
+
+    }
+
 }

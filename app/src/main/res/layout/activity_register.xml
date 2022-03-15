@@ -64,30 +64,48 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/emailnum"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:hint="@string/emailphone"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:textColorHint="@color/darkgray" />
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/loginchanger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:text="@string/changebtn_phone"
+                    android:layout_gravity="center"
+                    style="@android:style/TextAppearance.DeviceDefault.Large"
+                    android:textColor="@color/darkteal"/>
+                <LinearLayout
+                    android:layout_width="1.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/darkteal"
+                    android:layout_marginVertical="5dp"/>
+                <EditText
+                    android:id="@+id/emailnum"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:hint="@string/phone"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:textColorHint="@color/darkgray" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/teal_700" />
-
+                android:background="@color/teal_700"/>
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="1dp"
                 android:layout_weight="1"
                 android:background="@color/white"

@@ -28,4 +28,8 @@
     <string name="register_main_hint">Введите данные</string>
     <string name="register_lbl_btn">Зарегистрироваться</string>
     <string name="lbl_auth">Авторизация</string>
+    <string name="changebtn_phone">+7</string>
+    <string name="changebtn_email">@</string>
+    <string name="phone">Номер телефона</string>
+    <string name="email">Эл. почта</string>
 </resources>
