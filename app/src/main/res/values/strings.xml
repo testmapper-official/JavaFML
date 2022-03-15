@@ -23,4 +23,9 @@
     <string name="password">Пароль</string>
     <string name="emailphone">Email или телефон</string>
     <string name="register">Создать новую учетную запись</string>
+    <string name="register_lbl">Регистрация</string>
+    <string name="register_hint">Ваш номер телефона или Email будут использоваться для входа в аккаунт</string>
+    <string name="register_main_hint">Введите данные</string>
+    <string name="register_lbl_btn">Зарегистрироваться</string>
+    <string name="lbl_auth">Авторизация</string>
 </resources>

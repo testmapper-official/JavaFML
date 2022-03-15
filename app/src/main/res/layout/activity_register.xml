@@ -19,15 +19,39 @@
         android:id="@+id/register_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/lbl_auth"
+        android:text="@string/register_lbl"
         android:gravity="center"
         android:textColor="@color/darkteal"
         style="@android:style/TextAppearance.DeviceDefault.Large"
-        app:layout_constraintBottom_toTopOf="@+id/cardauth"
+        app:layout_constraintBottom_toTopOf="@+id/cardregister"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <TextView
+        android:id="@+id/enter_the_content"
+        style="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/register_main_hint"
+        android:layout_margin="10dp"
+        android:textColor="@color/teal_700"
+        app:layout_constraintBottom_toTopOf="@+id/enter_the_content2" />
+
+    <TextView
+        android:id="@+id/enter_the_content2"
+        style="@android:style/TextAppearance.DeviceDefault.Small"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/register_hint"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/tealgray"
+        app:layout_constraintBottom_toTopOf="@+id/cardregister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardauth"
+        android:id="@+id/cardregister"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="20dp"
@@ -45,64 +69,55 @@
                 android:id="@+id/emailnum"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_weight="1"
-                android:hint="@string/emailphone"
-                android:maxLines="1"
-                android:textColorHint="@color/darkgray"
-                android:background="@color/white"
-                android:layout_marginBottom="1dp"
                 android:layout_marginLeft="5dp"
-                android:inputType="textEmailAddress"/>
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:hint="@string/emailphone"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:textColorHint="@color/darkgray" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/teal_700"/>
+                android:background="@color/teal_700" />
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_weight="1"
-                android:hint="@string/password"
-                android:maxLines="1"
-                android:textColorHint="@color/darkgray"
-                android:background="@color/white"
-                android:layout_marginTop="1dp"
                 android:layout_marginLeft="5dp"
-                android:inputType="textPassword"/>
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColorHint="@color/darkgray" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardenter"
+        android:id="@+id/cardgetcode"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="20dp"
         app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardauth"
+        app:layout_constraintTop_toBottomOf="@+id/cardregister"
         tools:layout_editor_absoluteX="20dp">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/auth"
+            android:id="@+id/getcode"
             style="@android:style/TextAppearance.DeviceDefault.Medium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/teal_700"
-            android:text="@string/enter"
+            android:text="@string/register_lbl_btn"
             android:textColor="@color/white" />
     </androidx.cardview.widget.CardView>
-    <TextView
-        android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@android:style/TextAppearance.DeviceDefault.Medium"
-        android:layout_margin="20dp"
-        android:textColor="@color/teal_700"
-        android:text="@string/register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardenter" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

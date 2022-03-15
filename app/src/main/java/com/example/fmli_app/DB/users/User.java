@@ -28,7 +28,7 @@ public class User {
         this.subscribed = new User[]{};
     }
 
-    private User(String password, String email, String number, String about_me, String avatar_url,
+    public User(String password, String email, String number, String about_me, String avatar_url,
                  String banner_url, String creation_date, String birthday, int permission) {
         this(-1, password, email, number, about_me, avatar_url, banner_url, creation_date, birthday,
                 permission);

@@ -15,9 +15,9 @@ public class SplashActivity extends AppCompatActivity {
     private final int SPLASH_DISPLAY_LENGTH = 1;
 
     SharedPreferences sharedPreferences;
-    final String EMAIL = "hash_user_email54";
-    final String NUMBER = "hash_user_number13";
-    final String PASSWORD = "hash_user_password81";
+    public static final String APP_PREFERENCES = "apppref";
+    public static final String LOGIN = "hash_user_login54"; // Эл. почта или телефон
+    public static final String PASSWORD = "hash_user_password81";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +27,17 @@ public class SplashActivity extends AppCompatActivity {
         // Подключение к базе данных
         Database db = new Database(this);
 
+
         // Задержка перед запуском приложения (минимальная + "холодный старт")
         new Handler().postDelayed(() -> {
+
             Intent intent = new Intent(this, AuthActivity.class);
-            sharedPreferences = getPreferences(MODE_PRIVATE);
-            String savedEmail = sharedPreferences.getString(EMAIL, "");
-            String savedNumber = sharedPreferences.getString(NUMBER, "");
+            sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
+            String savedLogin = sharedPreferences.getString(LOGIN, "");
             String savedPassword = sharedPreferences.getString(PASSWORD, "");
 
             // Если пользователь найден, то переходит к MainActivity
-            User user = db.selectUser(savedEmail, savedNumber, savedPassword);
+            User user = db.selectUser(savedLogin, savedPassword);
             if (user != null) {
                 intent = new Intent(this, MainActivity.class);
             }

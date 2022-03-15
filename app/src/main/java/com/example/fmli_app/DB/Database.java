@@ -49,7 +49,7 @@ public class Database {
         contentValues.put(TABLE_NAME_NOTIFICATIONS_COLUMN_USER_ID, notificationItem.getType());
         contentValues.put(TABLE_NAME_NOTIFICATIONS_COLUMN_TYPE, notificationItem.getText());
         contentValues.put(TABLE_NAME_NOTIFICATIONS_COLUMN_TEXT, notificationItem.getDate());
-        return dataBase.insert(TABLE_NAME_NOTIFICATIONS_COLUMN_DATE, null, contentValues);
+        return dataBase.insert(TABLE_NAME_NOTIFICATIONS, null, contentValues);
     }
 
     // Добавление пользователя User в таблицу базы данных
@@ -123,18 +123,18 @@ public class Database {
     }
 
     // Взять пользователя User из таблицы users в базе данных
-    public User selectUser(String email, String number, String password) {
+    public User selectUser(String login, String password) {
         Cursor cursor = dataBase.rawQuery("SELECT *" +
                         " FROM " + TABLE_NAME_USERS +
-                        " WHERE ((" + TABLE_NAME_USERS_COLUMN_EMAIL + "=" + '"' + email + '"' +
-                        " OR " + TABLE_NAME_USERS_COLUMN_NUMBER + "=" + '"' + number + "\")" +
+                        " WHERE ((" + TABLE_NAME_USERS_COLUMN_EMAIL + "=" + '"' + login + '"' +
+                        " OR " + TABLE_NAME_USERS_COLUMN_NUMBER + "=" + '"' + login + "\")" +
                         " AND " + TABLE_NAME_USERS_COLUMN_PASSWORD + "=" + '"' + password + "\")",
                 null);
         cursor.moveToFirst();
         if (!cursor.isAfterLast()) {
             long id = cursor.getLong(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_ID));
-            email = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_EMAIL));
-            number = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_NUMBER));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_EMAIL));
+            String number = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_NUMBER));
             String birthday = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_BIRTHDAY));
             String about_me = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_ABOUT));
             String avatar_url = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_AVATAR));
