@@ -12,7 +12,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor sharedPreferencesEditor;
     boolean loginIsNum = true;
+    Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Подключение к базе данных
-        Database db = new Database(this);
+        db = new Database(this);
 
         // Получение SharedPreferences
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
@@ -56,18 +56,6 @@ public class RegisterActivity extends AppCompatActivity {
         loginchanger = this.findViewById(R.id.loginchanger);
 
         // Подключение бекенд функций
-        loginchanger.setOnClickListener(view -> {
-            if (loginIsNum) {
-                emailnum.setHint(R.string.email);
-                loginchanger.setText(this.getString(R.string.changebtn_email));
-                loginchanger.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS);
-            } else {
-                emailnum.setHint(R.string.phone);
-                loginchanger.setText(this.getString(R.string.changebtn_phone));
-                loginchanger.setInputType(InputType.TYPE_CLASS_PHONE);
-            }
-            loginIsNum = !loginIsNum;
-        });
         getcode.setOnClickListener(view -> {
             // Регистрация
             String login = emailnum.getText().toString();
@@ -103,6 +91,18 @@ public class RegisterActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Такая учетная запись уже существует", Toast.LENGTH_SHORT).show();
             }
+        });
+        loginchanger.setOnClickListener(view -> {
+            if (loginIsNum) {
+                emailnum.setHint(R.string.email);
+                loginchanger.setText(this.getString(R.string.changebtn_email));
+                emailnum.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+            } else {
+                emailnum.setHint(R.string.phone);
+                loginchanger.setText(this.getString(R.string.changebtn_phone));
+                emailnum.setInputType(InputType.TYPE_CLASS_PHONE);
+            }
+            loginIsNum = !loginIsNum;
         });
     }
 }

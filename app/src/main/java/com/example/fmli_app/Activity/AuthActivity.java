@@ -7,7 +7,7 @@ import static com.example.fmli_app.Activity.SplashActivity.PASSWORD;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
+import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -16,19 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.example.fmli_app.DB.Database;
 import com.example.fmli_app.DB.users.User;
 import com.example.fmli_app.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
 
 
 public class AuthActivity extends AppCompatActivity {
@@ -37,6 +28,7 @@ public class AuthActivity extends AppCompatActivity {
     TextView register;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor sharedPreferencesEditor;
+    Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +42,7 @@ public class AuthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auth);
 
         // Подключение к базе данных
-        Database db = new Database(this);
+        db = new Database(this);
 
         // Получение SharedPreferences
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
@@ -65,30 +57,40 @@ public class AuthActivity extends AppCompatActivity {
         emailnum.setText(sharedPreferences.getString(LOGIN, ""));
 
         // Подключение бекенд функций
-        auth.setOnClickListener(view -> {
-            // Авторизация
+        password.setOnKeyListener((v, keyCode, event) -> {
+            // Если пользователь завершает ввод
+            if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                auth();
 
-            String login = emailnum.getText().toString();
-            String pass = password.getText().toString();
-
-            // Если пользователь найден, то переходит к MainActivity
-            User user = db.selectUser(login, pass);
-            if (user != null) {
-                sharedPreferencesEditor.putString(LOGIN, login);
-                sharedPreferencesEditor.putString(PASSWORD, pass);
-                sharedPreferencesEditor.commit();
-                Intent intent = new Intent(this, MainActivity.class);
-                this.startActivity(intent);
-                this.finish();
-            } else {
-                Toast.makeText(this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
+                return true;
             }
-
+            return false;
         });
+        auth.setOnClickListener(view -> auth());
         register.setOnClickListener(view -> {
             // Переход к RegisterActivity
             Intent intent = new Intent(this, RegisterActivity.class);
             this.startActivity(intent);
         });
+    }
+
+    private void auth() {
+        // Авторизация
+
+        String login = emailnum.getText().toString();
+        String pass = password.getText().toString();
+
+        // Если пользователь найден, то переходит к MainActivity
+        User user = db.selectUser(login, pass);
+        if (user != null) {
+            sharedPreferencesEditor.putString(LOGIN, login);
+            sharedPreferencesEditor.putString(PASSWORD, pass);
+            sharedPreferencesEditor.commit();
+            Intent intent = new Intent(this, MainActivity.class);
+            this.startActivity(intent);
+            this.finish();
+        } else {
+            Toast.makeText(this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
+        }
     }
 }
