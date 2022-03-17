@@ -32,4 +32,8 @@
     <string name="changebtn_email">@</string>
     <string name="phone">Номер телефона</string>
     <string name="email">Эл. почта</string>
+    <string name="add_comm">Добавить комментарий</string>
+    <string name="add_news">Добавить статью</string>
+    <string name="add_tag">Добавить тэг</string>
+    <string name="settings">Настройки</string>
 </resources>

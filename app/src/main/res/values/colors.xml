@@ -14,4 +14,5 @@
     <color name="lightgray">#959393</color>
     <color name="darkgray">#676565</color>
     <color name="tealgray">#63979E</color>
+    <color name="transparent">#00000000</color>
 </resources>
