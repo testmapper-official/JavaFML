@@ -4,26 +4,30 @@
         android:id="@+id/homeFragment"
         android:enabled="true"
         android:icon="@drawable/nav_main"
-        android:title="@string/main"/>
+        android:title="@string/main"
+        android:menuCategory="secondary"/>
     <item
         android:id="@+id/serviceFragment"
         android:enabled="true"
         android:icon="@drawable/nav_services"
-        android:title="@string/services"/>
+        android:title="@string/services"
+        android:menuCategory="secondary"/>
     <item
-        android:id="@+id/page_add"
+        android:id="@+id/bottomNavigationDrawerFragment"
         android:enabled="true"
         android:icon="@drawable/nav_add"
-
-        android:title=""/>
+        android:title=""
+        android:menuCategory="secondary"/>
     <item
         android:id="@+id/notificationsFragment"
         android:enabled="true"
         android:icon="@drawable/nav_notifications"
-        android:title="@string/notifications"/>
+        android:title="@string/notifications"
+        android:menuCategory="secondary"/>
     <item
         android:id="@+id/profileFragment"
         android:enabled="true"
         android:icon="@drawable/nav_profile"
-        android:title="@string/profile"/>
+        android:title="@string/profile"
+        android:menuCategory="secondary"/>
 </menu>

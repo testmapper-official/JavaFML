@@ -20,4 +20,8 @@
         android:id="@+id/profileFragment"
         android:name="com.example.fmli_app.Fragment.Profile.ProfileFragment"
         android:label="ProfileFragment" />
+    <dialog
+        android:id="@+id/bottomNavigationDrawerFragment"
+        android:name="com.example.fmli_app.Fragment.BottomNavigationDrawerFragment"
+        android:label="BottomNavigationDrawerFragment" />
 </navigation>

@@ -3,15 +3,19 @@
     <group android:checkableBehavior="none">
         <item
             android:id="@+id/app_bar_add_comm"
+            android:icon="@drawable/ic_comment"
             android:title="@string/add_comm" />
         <item
             android:id="@+id/app_bar_add_news"
+            android:icon="@drawable/ic_news"
             android:title="@string/add_news" />
         <item
             android:id="@+id/app_bar_add_tag"
+            android:icon="@drawable/ic_tag"
             android:title="@string/add_tag" />
         <item
             android:id="@+id/app_bar_settings"
+            android:icon="@drawable/ic_settings"
             android:title="@string/settings" />
     </group>
 </menu>

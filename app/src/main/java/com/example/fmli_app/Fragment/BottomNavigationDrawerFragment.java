@@ -31,12 +31,16 @@ public class BottomNavigationDrawerFragment extends BottomSheetDialogFragment {
             switch (menuItem.getItemId()) {
                 case R.id.app_bar_add_comm:
                     //
+                    break;
                 case R.id.app_bar_add_news:
                     //
+                    break;
                 case R.id.app_bar_add_tag:
                     //
+                    break;
                 case R.id.app_bar_settings:
                     //
+                    break;
             }
             return true;
         });
