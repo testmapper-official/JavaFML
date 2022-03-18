@@ -32,6 +32,9 @@ public class BottomNavigationDrawerFragment extends BottomSheetDialogFragment {
                 case R.id.app_bar_add_comm:
                     //
                     break;
+                case R.id.app_bar_add_notify:
+                    //
+                    break;
                 case R.id.app_bar_add_news:
                     //
                     break;
