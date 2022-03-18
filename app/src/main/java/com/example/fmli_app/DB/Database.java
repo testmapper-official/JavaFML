@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.fmli_app.DB.news.NewsItem;
 import com.example.fmli_app.DB.notifications.NotificationItem;
 import com.example.fmli_app.DB.users.User;
 
@@ -34,6 +35,13 @@ public class Database {
     public static final String TABLE_NAME_NOTIFICATIONS_COLUMN_TYPE = "type";
     public static final String TABLE_NAME_NOTIFICATIONS_COLUMN_TEXT = "text_content";
     public static final String TABLE_NAME_NOTIFICATIONS_COLUMN_DATE = "creation_date";
+    // Названия полей таблицы news базы данных
+    public static final String TABLE_NAME_NEWS_COLUMN_ID = "id";
+    public static final String TABLE_NAME_NEWS_COLUMN_AUTHOR_ID = "author";
+    public static final String TABLE_NAME_NEWS_COLUMN_URL = "url_content";
+    public static final String TABLE_NAME_NEWS_COLUMN_TITLE = "title_content";
+    public static final String TABLE_NAME_NEWS_COLUMN_TEXT = "text_content";
+    public static final String TABLE_NAME_NEWS_COLUMN_DATE = "creation_date";
 
     private final SQLiteDatabase dataBase;
 
@@ -67,6 +75,20 @@ public class Database {
         return dataBase.insert(TABLE_NAME_USERS, null, contentValues);
     }
 
+    // Добавление пользователя User в таблицу базы данных
+    public long insert(NewsItem newsItem) {
+        ContentValues contentValues = new ContentValues();
+        if (newsItem.getAuthor() != null)
+            contentValues.put(TABLE_NAME_NEWS_COLUMN_AUTHOR_ID, newsItem.getAuthor().getId());
+        else
+            contentValues.put(TABLE_NAME_NEWS_COLUMN_AUTHOR_ID, -1);
+        contentValues.put(TABLE_NAME_NEWS_COLUMN_URL, newsItem.getURL());
+        contentValues.put(TABLE_NAME_NEWS_COLUMN_TITLE, newsItem.getTitle());
+        contentValues.put(TABLE_NAME_NEWS_COLUMN_TEXT, newsItem.getText());
+        contentValues.put(TABLE_NAME_NEWS_COLUMN_DATE, newsItem.getDate());
+        return dataBase.insert(TABLE_NAME_NEWS, null, contentValues);
+    }
+
     // Очищение таблицы notifications в базе данных
     protected void deleteNotifications() {
         dataBase.delete(TABLE_NAME_NOTIFICATIONS, null, null);
@@ -78,6 +100,13 @@ public class Database {
     protected void deleteUsers() {
         dataBase.delete(TABLE_NAME_USERS, null, null);
         String clearDBQuery = "DELETE FROM " + TABLE_NAME_USERS;
+        dataBase.execSQL(clearDBQuery);
+    }
+
+    // Очищение таблицы news в базе данных
+    protected void deleteNews() {
+        dataBase.delete(TABLE_NAME_NEWS, null, null);
+        String clearDBQuery = "DELETE FROM " + TABLE_NAME_NEWS;
         dataBase.execSQL(clearDBQuery);
     }
 
@@ -122,6 +151,27 @@ public class Database {
         return notificationItems;
     }
 
+    // Взять все уведомления NewsItem из таблицы notifications в базе данных
+    public ArrayList<NewsItem> selectAllNews() {
+        Cursor cursor = dataBase.query(TABLE_NAME_NEWS, null, null,
+                null, null, null, null);
+        ArrayList<NewsItem> newsItems = new ArrayList<>();
+        cursor.moveToFirst();
+        if (!cursor.isAfterLast()) {
+            do {
+                long id = cursor.getLong(cursor.getColumnIndexOrThrow(TABLE_NAME_NEWS_COLUMN_ID));
+                User author = selectUserById(cursor.getLong(cursor.getColumnIndexOrThrow(TABLE_NAME_NEWS_COLUMN_AUTHOR_ID)));
+                String URL = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_NEWS_COLUMN_URL));
+                String date = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_NEWS_COLUMN_DATE));
+                String text = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_NEWS_COLUMN_TEXT));
+                String title = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_NEWS_COLUMN_TITLE));
+                newsItems.add(new NewsItem(id, author, URL, date, text, title));
+            } while (cursor.moveToNext());
+        }
+
+        return newsItems;
+    }
+
     // Взять пользователя User из таблицы users в базе данных
     public User selectUser(String login, String password) {
         Cursor cursor = dataBase.rawQuery("SELECT *" +
@@ -133,6 +183,29 @@ public class Database {
         cursor.moveToFirst();
         if (!cursor.isAfterLast()) {
             long id = cursor.getLong(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_ID));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_EMAIL));
+            String number = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_NUMBER));
+            String birthday = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_BIRTHDAY));
+            String about_me = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_ABOUT));
+            String avatar_url = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_AVATAR));
+            String banner_url = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_BANNER));
+            String creation_date = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_DATE));
+            int permission = cursor.getInt(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_PERMISSION));
+            return new User(id, password, email, number, about_me, avatar_url, banner_url, creation_date,
+                    birthday, permission);
+        }
+        return null;
+    }
+
+    // Взять пользователя User из таблицы users в базе данных
+    public User selectUserById(long id) {
+        Cursor cursor = dataBase.rawQuery("SELECT *" +
+                        " FROM " + TABLE_NAME_USERS +
+                        " WHERE " + TABLE_NAME_USERS_COLUMN_ID + "=" + id,
+                null);
+        cursor.moveToFirst();
+        if (!cursor.isAfterLast()) {
+            String password = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_PASSWORD));
             String email = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_EMAIL));
             String number = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_NUMBER));
             String birthday = cursor.getString(cursor.getColumnIndexOrThrow(TABLE_NAME_USERS_COLUMN_BIRTHDAY));

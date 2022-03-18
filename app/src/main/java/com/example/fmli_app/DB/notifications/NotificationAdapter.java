@@ -33,8 +33,8 @@ public class NotificationAdapter extends ArrayAdapter<NotificationItem> {
 
         imageView.setImageResource(data.getDrawableResource());
 
-        String text = data.getText();
-        if (text.length() <= 192) {
+        // Если содержимое текста уведомления больше, чем заверено, скрывает остальной текст.
+        if (data.getText().length() <= 192) {
             textView.setText(data.getText());
         } else {
             textView.setText(data.getText().substring(0, 190) + "...");

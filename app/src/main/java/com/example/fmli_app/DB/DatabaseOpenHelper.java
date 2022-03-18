@@ -1,6 +1,29 @@
 package com.example.fmli_app.DB;
 
-import static com.example.fmli_app.DB.Database.*;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NEWS;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NEWS_COLUMN_AUTHOR_ID;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NEWS_COLUMN_DATE;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NEWS_COLUMN_ID;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NEWS_COLUMN_TEXT;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NEWS_COLUMN_TITLE;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NEWS_COLUMN_URL;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NOTIFICATIONS;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NOTIFICATIONS_COLUMN_DATE;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NOTIFICATIONS_COLUMN_ID;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NOTIFICATIONS_COLUMN_TEXT;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NOTIFICATIONS_COLUMN_TYPE;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_NOTIFICATIONS_COLUMN_USER_ID;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_USERS;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_USERS_COLUMN_ABOUT;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_USERS_COLUMN_AVATAR;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_USERS_COLUMN_BANNER;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_USERS_COLUMN_BIRTHDAY;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_USERS_COLUMN_DATE;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_USERS_COLUMN_EMAIL;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_USERS_COLUMN_ID;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_USERS_COLUMN_NUMBER;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_USERS_COLUMN_PASSWORD;
+import static com.example.fmli_app.DB.Database.TABLE_NAME_USERS_COLUMN_PERMISSION;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,6 +41,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         createNotificationsTable(sqLiteDatabase);
         createUsersTable(sqLiteDatabase);
+        createNewsTable(sqLiteDatabase);
     }
 
     public void createNotificationsTable(SQLiteDatabase sqLiteDatabase) {
@@ -45,10 +69,22 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(query);
     }
 
+    public void createNewsTable(SQLiteDatabase sqLiteDatabase) {
+        String query = "CREATE TABLE " + TABLE_NAME_NEWS + " (" +
+                TABLE_NAME_NEWS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                TABLE_NAME_NEWS_COLUMN_AUTHOR_ID + " INTEGER, " +
+                TABLE_NAME_NEWS_COLUMN_URL + " TEXT, " +
+                TABLE_NAME_NEWS_COLUMN_TITLE + " TEXT, " +
+                TABLE_NAME_NEWS_COLUMN_TEXT + " TEXT, " +
+                TABLE_NAME_NEWS_COLUMN_DATE + " DATE);";
+        sqLiteDatabase.execSQL(query);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_USERS);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_NOTIFICATIONS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_NEWS);
         onCreate(sqLiteDatabase);
     }
 

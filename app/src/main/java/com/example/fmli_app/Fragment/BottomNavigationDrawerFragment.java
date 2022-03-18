@@ -1,6 +1,12 @@
 package com.example.fmli_app.Fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.example.fmli_app.Activity.SplashActivity.APP_PREFERENCES;
+import static com.example.fmli_app.Activity.SplashActivity.LOGIN;
+import static com.example.fmli_app.Activity.SplashActivity.PASSWORD;
+
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -12,18 +18,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+import com.example.fmli_app.DB.Database;
+import com.example.fmli_app.DB.news.NewsItem;
 import com.example.fmli_app.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Date;
+
 public class BottomNavigationDrawerFragment extends BottomSheetDialogFragment {
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor sharedPreferencesEditor;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bottomsheet, container, false);
+
+        // Подключение к базе данных
+        Database db = new Database(getContext());
+
+        // Получение SharedPreferences
+        sharedPreferences = getContext().getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
 
         NavigationView nav_view = view.findViewById(R.id.navigation_drawer);
 
@@ -36,7 +56,14 @@ public class BottomNavigationDrawerFragment extends BottomSheetDialogFragment {
                     //
                     break;
                 case R.id.app_bar_add_news:
-                    //
+
+                    Toast.makeText(getContext(), "Добавлено", Toast.LENGTH_SHORT).show();
+
+                    Date newDate = new Date(System.currentTimeMillis());
+                    String login = sharedPreferences.getString(LOGIN, "");
+                    String password = sharedPreferences.getString(PASSWORD, "");
+
+                    db.insert(new NewsItem(db.selectUser(login, password), "", newDate.toString(), getString(R.string.empty_text), getString(R.string.app_name)));
                     break;
                 case R.id.app_bar_add_tag:
                     //
@@ -45,6 +72,7 @@ public class BottomNavigationDrawerFragment extends BottomSheetDialogFragment {
                     //
                     break;
             }
+            dismiss();
             return true;
         });
 

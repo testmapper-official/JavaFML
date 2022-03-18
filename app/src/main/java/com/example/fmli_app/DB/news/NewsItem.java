@@ -6,49 +6,50 @@ import com.example.fmli_app.DB.users.User;
 public class NewsItem {
     private final long id;
     private Tag[] tags;
-    private User[] authors;
-    private String url, text;
+    private User author;
+    private String URL, text, title;
     private final String date;
 
-    public NewsItem(long id, Tag[] tags, String url, String date, String text) {
+    public NewsItem(long id, User author, String URL, String date, String text, String title) {
         this.id = id;
-        this.tags = tags;
-        this.authors = new User[]{};
-        this.url = url;
+        this.tags = new Tag[]{};
+        this.author = author;
+        this.URL = URL;
         this.date = date;
         this.text = text;
+        this.title = title;
     }
 
-    public NewsItem(Tag[] tags, String url, String date, String text) {
-        this(-1, tags, url, date, text);
+    public NewsItem(User author, String URL, String date, String text, String title) {
+        this(-1, author, URL, date, text, title);
     }
 
     public long getId() {
         return id;
     }
 
-    public Tag[] getTags_id() {
+    public Tag[] getTags() {
         return tags;
     }
 
-    public void setTags_id(Tag[] tags) {
+    public void setTags(Tag[] tags) {
         this.tags = tags;
     }
 
-    public User[] getAuthors_id() {
-        return authors;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setAuthors_id(User[] authors) {
-        this.authors = authors;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
-    public String getUrl() {
-        return url;
+    public String getURL() {
+        return URL;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 
     public String getDate() {
@@ -61,5 +62,13 @@ public class NewsItem {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

@@ -2,27 +2,27 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:contextClickable="true">
+    android:layout_height="350dp"
+    android:contextClickable="true"
+    android:background="@drawable/rounded_news">
 
     <LinearLayout
-        android:id="news_maincontent"
+        android:id="@+id/news_maincontent"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/news_picture"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_margin="10dp"
             app:cardCornerRadius="30dp">
 
             <ImageView
                 android:id="@+id/avatar"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:src="@drawable/placeholder_avatar" />
         </androidx.cardview.widget.CardView>
 
@@ -33,21 +33,25 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/news_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:gravity="bottom"
+                android:maxLines="1"
                 android:text="@string/samplename"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/news_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:gravity="top"
+                android:maxLines="1"
                 android:text="@string/samplename"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/gray" />
@@ -60,23 +64,53 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/news_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/samplename"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/news_text"
+        app:layout_constraintTop_toBottomOf="@+id/news_maincontent" />
+
+    <TextView
+        android:id="@+id/news_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/samplename"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/news_title"
+        app:layout_constraintBottom_toTopOf="@+id/news_picture" />
+
     <ImageView
         android:id="@+id/news_picture"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        app:layout_constraintTop_toBottomOf="@+id/news_text"
         app:layout_constraintBottom_toTopOf="@+id/news_stats" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toTopOf="@+id/news_stats"/>
 
     <LinearLayout
         android:id="@+id/news_stats"
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/news_picture"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:src="@drawable/ic_like_inactive" />
 
         <TextView
@@ -85,6 +119,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:maxLines="1"
             android:text="@string/validnumber"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/gray" />
@@ -92,7 +127,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:src="@drawable/ic_news_comment" />
 
         <TextView
@@ -101,6 +136,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:maxLines="1"
             android:text="@string/validnumber"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/gray" />
@@ -108,7 +144,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:src="@drawable/ic_watched" />
 
         <TextView
@@ -117,6 +153,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:maxLines="1"
             android:text="@string/validnumber"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/gray" />
