@@ -7,7 +7,6 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fmli_app.DB.Database;
 import com.example.fmli_app.DB.users.User;
 import com.example.fmli_app.R;
 
@@ -25,7 +24,6 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         // Подключение к базе данных
-        Database db = new Database(this);
 
 
         // Задержка перед запуском приложения (минимальная + "холодный старт")
@@ -37,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
             String savedPassword = sharedPreferences.getString(PASSWORD, "");
 
             // Если пользователь найден, то переходит к MainActivity
-            User user = db.selectUser(savedLogin, savedPassword);
+            User user = new User(); // db.selectUser(savedLogin, savedPassword);
             if (user != null) {
                 intent = new Intent(this, MainActivity.class);
             }

@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fmli_app.DB.Database;
 import com.example.fmli_app.DB.users.User;
 import com.example.fmli_app.R;
 
@@ -28,7 +27,6 @@ public class AuthActivity extends AppCompatActivity {
     TextView register;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor sharedPreferencesEditor;
-    Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +40,6 @@ public class AuthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auth);
 
         // Подключение к базе данных
-        db = new Database(this);
 
         // Получение SharedPreferences
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
@@ -81,7 +78,7 @@ public class AuthActivity extends AppCompatActivity {
         String pass = password.getText().toString();
 
         // Если пользователь найден, то переходит к MainActivity
-        User user = db.selectUser(login, pass);
+        User user = new User();
         if (user != null) {
             sharedPreferencesEditor.putString(LOGIN, login);
             sharedPreferencesEditor.putString(PASSWORD, pass);

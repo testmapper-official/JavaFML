@@ -44,76 +44,10 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/subscribed"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toEndOf="@+id/posts">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp">
-
-                <TextView
-                    android:id="@+id/subscribed_count"
-                    style="@android:style/TextAppearance.DeviceDefault.Large"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/validnumber"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkteal"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    style="@android:style/TextAppearance.DeviceDefault.Small"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/subscribed"
-                    android:textAlignment="center"
-                    android:textColor="@color/gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/subscribed_count" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/subscribers"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toEndOf="@+id/subscribed">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp">
-
-                <TextView
-                    android:id="@+id/subscribers_count"
-                    style="@android:style/TextAppearance.DeviceDefault.Large"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/validnumber"
-                    android:textAlignment="center"
-                    android:textColor="@color/darkteal"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    style="@android:style/TextAppearance.DeviceDefault.Small"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/subscribers"
-                    android:textAlignment="center"
-                    android:textColor="@color/gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/subscribers_count" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
             android:id="@+id/likes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_toEndOf="@+id/subscribers">
+            android:layout_toEndOf="@+id/posts">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

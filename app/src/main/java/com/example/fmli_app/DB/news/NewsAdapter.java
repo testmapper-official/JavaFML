@@ -42,7 +42,7 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
         ListView tagsList = convertView.findViewById(R.id.tags_list);
 
 //        avatar.setImageURI(data.getAuthor().getAvatar_url());
-        username.setText(data.getAuthor().getCreation_date());
+//        username.setText(data.getAuthor().getCreation_date());
 
         // Если содержимое текста статьи больше, чем заверено, скрывает остальной текст.
         if (data.getText().length() <= 64) {
@@ -50,7 +50,7 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
         } else {
             text.setText(data.getText().substring(0, 62) + "...");
         }
-        date.setText(data.getDate());
+        //date.setText(Simple.getDateCurrentTimeZone(data.getDate().getSeconds()));
         title.setText(data.getTitle());
 
         // Если изображения нет, то скрывает ImageView:news_picture

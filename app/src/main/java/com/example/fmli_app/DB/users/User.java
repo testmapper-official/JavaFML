@@ -1,41 +1,25 @@
 package com.example.fmli_app.DB.users;
 
-public class User {
-    private final long id;
-    private String password, birthday, about_me, avatar_url, banner_url, email, number;
-    private final String creation_date;
-    private int permission;
-    private Object[] likes;
-    private Object[] posts;
-    private User[] subscribers;
-    private User[] subscribed;
+import com.google.firebase.Timestamp;
 
-    public User(long id, String password, String email, String number, String about_me, String avatar_url,
-                String banner_url, String creation_date, String birthday, int permission) {
-        this.id = id;
+public class User {
+    private String password, birthday, about_me, avatar_url, banner_url, email, number;
+    private Timestamp date;
+    private int permission;
+
+    public User() {}
+
+    public User(String password, String email, String number, String about_me, String avatar_url,
+                String banner_url, Timestamp date, String birthday, int permission) {
         this.password = password;
         this.email = email;
         this.number = number;
         this.about_me = about_me;
-        this.creation_date = creation_date;
+        this.date = date;
         this.avatar_url = avatar_url;
         this.banner_url = banner_url;
         this.birthday = birthday;
         this.permission = permission;
-        this.likes = new Object[]{};
-        this.posts = new Object[]{};
-        this.subscribers = new User[]{};
-        this.subscribed = new User[]{};
-    }
-
-    public User(String password, String email, String number, String about_me, String avatar_url,
-                 String banner_url, String creation_date, String birthday, int permission) {
-        this(-1, password, email, number, about_me, avatar_url, banner_url, creation_date, birthday,
-                permission);
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getPassword() {
@@ -54,8 +38,12 @@ public class User {
         this.about_me = about_me;
     }
 
-    public String getCreation_date() {
-        return creation_date;
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
+
+    public Timestamp getDate() {
+        return date;
     }
 
     public String getBirthday() {
@@ -104,37 +92,5 @@ public class User {
 
     public void setPermission(int permission) {
         this.permission = permission;
-    }
-
-    public Object[] getLikes() {
-        return likes;
-    }
-
-    public void setLikes(Object[] likes) {
-        this.likes = likes;
-    }
-
-    public Object[] getPosts() {
-        return posts;
-    }
-
-    public void setPosts(Object[] posts) {
-        this.posts = posts;
-    }
-
-    public User[] getSubscribers() {
-        return subscribers;
-    }
-
-    public void setSubscribers(User[] subscribers) {
-        this.subscribers = subscribers;
-    }
-
-    public User[] getSubscribed() {
-        return subscribed;
-    }
-
-    public void setSubscribed(User[] subscribed) {
-        this.subscribed = subscribed;
     }
 }

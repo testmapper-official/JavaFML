@@ -16,9 +16,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fmli_app.DB.Database;
 import com.example.fmli_app.DB.users.User;
 import com.example.fmli_app.R;
+import com.google.firebase.Timestamp;
 
 import java.util.Date;
 
@@ -29,7 +29,6 @@ public class RegisterActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor sharedPreferencesEditor;
     boolean loginIsNum = true;
-    Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Подключение к базе данных
-        db = new Database(this);
+//        db = new Database(this);
 
         // Получение SharedPreferences
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
@@ -60,10 +59,10 @@ public class RegisterActivity extends AppCompatActivity {
             // Регистрация
             String login = emailnum.getText().toString();
 
-            if (!db.hasUser(login)) {
+            if (true) {
 
                 String pass = password.getText().toString();
-                Date date = new Date(System.currentTimeMillis());
+                Timestamp now = new Timestamp(new Date(System.currentTimeMillis()));
 
                 String email = null;
                 String number = null;
@@ -74,8 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                     number = login;
                 }
                 // Регистрация пользователя в базе данных
-                User user = new User(pass, email, number, null, null, null, date.toString(), null, 0);
-                db.insert(user);
+                User user = new User(pass, email, number, null, null, null, now, null, 0);
 
                 // Запомнить данные пользователя в приложении
                 sharedPreferencesEditor.putString(LOGIN, login);

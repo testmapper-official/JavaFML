@@ -1,59 +1,45 @@
 package com.example.fmli_app.DB.news;
 
-import com.example.fmli_app.DB.tags.Tag;
-import com.example.fmli_app.DB.users.User;
+import com.google.firebase.Timestamp;
 
 public class NewsItem {
-    private final long id;
-    private Tag[] tags;
-    private User author;
-    private String URL, text, title;
-    private final String date;
+    static public final String key = "News";
+    private long author;
+    private String url, text, title;
+    private Timestamp date;
 
-    public NewsItem(long id, User author, String URL, String date, String text, String title) {
-        this.id = id;
-        this.tags = new Tag[]{};
+    public NewsItem() {}
+
+    public NewsItem(long author, String url, Timestamp date, String text, String title) {
         this.author = author;
-        this.URL = URL;
+        this.url = url;
         this.date = date;
         this.text = text;
         this.title = title;
     }
 
-    public NewsItem(User author, String URL, String date, String text, String title) {
-        this(-1, author, URL, date, text, title);
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public Tag[] getTags() {
-        return tags;
-    }
-
-    public void setTags(Tag[] tags) {
-        this.tags = tags;
-    }
-
-    public User getAuthor() {
+    public long getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(long author) {
         this.author = author;
     }
 
     public String getURL() {
-        return URL;
+        return url;
     }
 
     public void setURL(String URL) {
-        this.URL = URL;
+        this.url = url;
     }
 
-    public String getDate() {
+    public Timestamp getDate() {
         return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 
     public String getText() {
@@ -70,5 +56,16 @@ public class NewsItem {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "NewsItem{" +
+                "author=" + author +
+                ", URL='" + url + '\'' +
+                ", text='" + text + '\'' +
+                ", title='" + title + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 }

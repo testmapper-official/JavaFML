@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FmlApp</string>
     <string name="main">Главная</string>
-    <string name="services">Сервисы</string>
+    <string name="services">Заметки</string>
     <string name="notifications">Уведомления</string>
     <string name="profile">Профиль</string>
     <string name="samplename"><i>@sample</i></string>
