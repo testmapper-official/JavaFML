@@ -2,9 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/rounded_news"
-    android:contextClickable="true">
+    android:clickable="false"
+    android:focusable="false"
+    android:focusableInTouchMode="false">
 
     <LinearLayout
         android:id="@+id/news_maincontent"
@@ -57,11 +59,6 @@
                 android:textColor="@color/gray" />
         </LinearLayout>
 
-        <ListView
-            android:id="@+id/tags_list"
-            android:layout_width="150dp"
-            android:layout_height="match_parent" />
-
     </LinearLayout>
 
     <TextView
@@ -93,13 +90,7 @@
         app:layout_constraintBottom_toTopOf="@+id/news_stats"
         app:layout_constraintTop_toBottomOf="@+id/news_text" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/news_stats" />
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/news_stats"
         android:layout_width="match_parent"
         android:layout_height="25dp"
@@ -108,32 +99,13 @@
         app:layout_constraintTop_toBottomOf="@+id/news_picture">
 
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/ic_like_inactive" />
-
-        <TextView
-            android:id="@+id/likes_count"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="@string/validnumber"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@color/gray" />
-
-        <LinearLayout
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/gray" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_news_comment" />
+            android:src="@drawable/ic_news_comment"
+            app:layout_constraintEnd_toStartOf="@+id/comments_count"
+            android:layout_marginRight="20dp"/>
 
         <TextView
             android:id="@+id/comments_count"
@@ -144,30 +116,10 @@
             android:maxLines="1"
             android:text="@string/validnumber"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@color/gray" />
-
-        <LinearLayout
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/gray" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_watched" />
-
-        <TextView
-            android:id="@+id/watched_count"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="@string/validnumber"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@color/gray" />
-    </LinearLayout>
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="20dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

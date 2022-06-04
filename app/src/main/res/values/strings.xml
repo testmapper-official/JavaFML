@@ -21,10 +21,10 @@
         Morbi ipsum massa, maximus ut placerat quis, rhoncus non magna.</string>
     <string name="enter">Войти</string>
     <string name="password">Пароль</string>
-    <string name="emailphone">Email или телефон</string>
+    <string name="emailphone">Email</string>
     <string name="register">Создать новую учетную запись</string>
     <string name="register_lbl">Регистрация</string>
-    <string name="register_hint">Ваш номер телефона или Email будут использоваться для входа в аккаунт</string>
+    <string name="register_hint">Ваш Email будет использоваться для входа в аккаунт</string>
     <string name="register_main_hint">Введите данные</string>
     <string name="register_lbl_btn">Зарегистрироваться</string>
     <string name="lbl_auth">Авторизация</string>
@@ -37,4 +37,10 @@
     <string name="add_news">Добавить статью</string>
     <string name="add_tag">Добавить тэг</string>
     <string name="settings">Настройки</string>
+    <string name="create">Создать</string>
+    <string name="cancel">Отмена</string>
+    <string name="title_name">Название статьи</string>
+    <string name="content">Содержание</string>
+    <string name="url_image">URL изображения</string>
+    <string name="comment">Комментарий</string>
 </resources>

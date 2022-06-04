@@ -1,13 +1,10 @@
 package com.example.fmli_app.Activity;
 
 import static com.example.fmli_app.Activity.SplashActivity.APP_PREFERENCES;
-import static com.example.fmli_app.Activity.SplashActivity.LOGIN;
-import static com.example.fmli_app.Activity.SplashActivity.PASSWORD;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -18,9 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fmli_app.DB.users.User;
 import com.example.fmli_app.R;
-import com.google.firebase.Timestamp;
-
-import java.util.Date;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -29,6 +26,8 @@ public class RegisterActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor sharedPreferencesEditor;
     boolean loginIsNum = true;
+    private FirebaseAuth mAuth;
+    DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Подключение к базе данных
-//        db = new Database(this);
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference(User.key);
 
         // Получение SharedPreferences
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
@@ -57,50 +57,28 @@ public class RegisterActivity extends AppCompatActivity {
         // Подключение бекенд функций
         getcode.setOnClickListener(view -> {
             // Регистрация
-            String login = emailnum.getText().toString();
-
-            if (true) {
-
-                String pass = password.getText().toString();
-                Timestamp now = new Timestamp(new Date(System.currentTimeMillis()));
-
-                String email = null;
-                String number = null;
-
-                if (!loginIsNum) {
-                    email = login;
-                } else {
-                    number = login;
-                }
+            String email = emailnum.getText().toString();
+            String pass = password.getText().toString();
+            if (pass.length() < 6) {
+                Toast.makeText(this, "Пароль должен состоять не менее из 6 символов", Toast.LENGTH_LONG).show();
+            } else {
                 // Регистрация пользователя в базе данных
-                User user = new User(pass, email, number, null, null, null, now, null, 0);
+                mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // Переход к MainActivity
+                        String id = mAuth.getUid();
+                        User user = new User(id, email,"", "", 0);
+                        mDatabase.push().setValue(user);
 
-                // Запомнить данные пользователя в приложении
-                sharedPreferencesEditor.putString(LOGIN, login);
-                sharedPreferencesEditor.putString(PASSWORD, pass);
-                sharedPreferencesEditor.commit();
-
-                // Переход к MainActivity
-                Toast.makeText(this, "Ваша учетная запись была успешно создана", Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                this.startActivity(intent);
-            } else {
-                Toast.makeText(this, "Такая учетная запись уже существует", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Ваша учетная запись была успешно создана", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        this.startActivity(intent);
+                    } else {
+                        Toast.makeText(this, "Ошибка", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
-        });
-        loginchanger.setOnClickListener(view -> {
-            if (loginIsNum) {
-                emailnum.setHint(R.string.email);
-                loginchanger.setText(this.getString(R.string.changebtn_email));
-                emailnum.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-            } else {
-                emailnum.setHint(R.string.phone);
-                loginchanger.setText(this.getString(R.string.changebtn_phone));
-                emailnum.setInputType(InputType.TYPE_CLASS_PHONE);
-            }
-            loginIsNum = !loginIsNum;
         });
     }
 }

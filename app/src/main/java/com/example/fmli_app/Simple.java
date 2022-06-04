@@ -19,4 +19,24 @@ public class Simple {
         }
         return "";
     }
+
+    public static String Nid(long id) {
+        return "N" + Encode(id);
+    }
+
+    public static String Cid(long id) {
+        return "C" + Encode(id);
+    }
+
+    public static String Encode(long id) {
+        String[] _alph = "0123456789abcdefgjhklmonpqrstyuvwxyz".split("");
+        String new_id = "";
+
+        while (id != 0) {
+            new_id = _alph[(int) id % _alph.length] + new_id;
+            id /= _alph.length;
+        }
+
+        return new_id;
+    }
 }

@@ -27,7 +27,10 @@
         </activity>
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.AuthActivity" />
-        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Activity.RegisterActivity"/>
+        <activity android:name=".Activity.NotesActivity"/>
+        <activity android:name=".Activity.NewsActivity"/>
+        <activity android:name=".Activity.NotesEditActivity"/>
     </application>
 
 </manifest>

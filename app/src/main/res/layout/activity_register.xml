@@ -17,23 +17,23 @@
 
     <TextView
         android:id="@+id/register_text"
+        style="@android:style/TextAppearance.DeviceDefault.Large"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/register_lbl"
         android:gravity="center"
+        android:text="@string/register_lbl"
         android:textColor="@color/darkteal"
-        style="@android:style/TextAppearance.DeviceDefault.Large"
         app:layout_constraintBottom_toTopOf="@+id/cardregister"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/enter_the_content"
         style="@android:style/TextAppearance.DeviceDefault.Medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:gravity="center"
         android:text="@string/register_main_hint"
-        android:layout_margin="10dp"
         android:textColor="@color/teal_700"
         app:layout_constraintBottom_toTopOf="@+id/enter_the_content2" />
 
@@ -42,9 +42,9 @@
         style="@android:style/TextAppearance.DeviceDefault.Small"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="@string/register_hint"
-        android:layout_marginBottom="10dp"
         android:textColor="@color/tealgray"
         app:layout_constraintBottom_toTopOf="@+id/cardregister"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,25 +64,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal">
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/loginchanger"
+                    style="@android:style/TextAppearance.DeviceDefault.Large"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@color/white"
-                    android:text="@string/changebtn_phone"
-                    android:layout_gravity="center"
-                    style="@android:style/TextAppearance.DeviceDefault.Large"
-                    android:textColor="@color/darkteal"/>
+                    android:text="@string/changebtn_email"
+                    android:textColor="@color/darkteal" />
+
                 <LinearLayout
                     android:layout_width="1.5dp"
                     android:layout_height="match_parent"
-                    android:background="@color/darkteal"
-                    android:layout_marginVertical="5dp"/>
+                    android:layout_marginVertical="5dp"
+                    android:background="@color/darkteal" />
+
                 <EditText
                     android:id="@+id/emailnum"
                     android:layout_width="match_parent"
@@ -91,8 +95,8 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:background="@color/white"
-                    android:hint="@string/phone"
-                    android:inputType="phone"
+                    android:hint="@string/emailphone"
+                    android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:textColorHint="@color/darkgray" />
             </LinearLayout>
@@ -100,7 +104,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/teal_700"/>
+                android:background="@color/teal_700" />
+
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
@@ -135,7 +140,6 @@
             android:text="@string/register_lbl_btn"
             android:textColor="@color/white" />
     </androidx.cardview.widget.CardView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

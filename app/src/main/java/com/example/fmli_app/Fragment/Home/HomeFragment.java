@@ -1,14 +1,17 @@
 package com.example.fmli_app.Fragment.Home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.fmli_app.Activity.NewsActivity;
 import com.example.fmli_app.DB.news.NewsAdapter;
 import com.example.fmli_app.DB.news.NewsItem;
 import com.example.fmli_app.R;
@@ -18,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.Nullable;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -36,32 +40,52 @@ public class HomeFragment extends Fragment {
         ListView newsView = view.findViewById(R.id.news_list);
         NewsAdapter arrayAdapter = new NewsAdapter(getContext(), data);
 
-        mDatabase.addChildEventListener( new ChildEventListener() {
+        mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onChildAdded( @NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                NewsItem newsItem = new NewsItem();//snapshot.getValue(NewsItem.class);
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                NewsItem newsItem = snapshot.getValue(NewsItem.class);
                 assert newsItem != null;
                 data.add(newsItem);
                 arrayAdapter.notifyDataSetChanged();
             }
+
             @Override
-            public void onChildChanged( @NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 arrayAdapter.notifyDataSetChanged();
             }
+
             @Override
-            public void onChildRemoved( @NonNull DataSnapshot snapshot) {
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
                 data.remove(snapshot.getValue(NewsItem.class));
                 arrayAdapter.notifyDataSetChanged();
             }
+
             @Override
-            public void onChildMoved( @NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
             }
+
             @Override
-            public void onCancelled( @NonNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error) {
             }
         });
 
         newsView.setAdapter(arrayAdapter);
+
+        // Выведение системного уведомления при нажатии элемента фрагмента уведомлений
+        newsView.setOnItemClickListener((adapterView, view1, i, l) -> {
+            Toast.makeText(getContext(), "123", Toast.LENGTH_SHORT).show();
+
+            //Получаем объект класса Notes
+            NewsItem newsItem = (NewsItem) adapterView.getAdapter().getItem(i);
+
+            // Переход к NewsActivity как отдельное окно.
+            Intent intent = new Intent(getContext(), NewsActivity.class);
+            //Преобразую класс Notes в gson
+
+            Gson gson = new Gson();
+            intent.putExtra("NewsItem", gson.toJson(newsItem));
+            startActivity(intent);
+        });
 
         return view;
     }

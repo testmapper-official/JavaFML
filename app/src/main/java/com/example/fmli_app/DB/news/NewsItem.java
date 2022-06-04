@@ -1,44 +1,52 @@
 package com.example.fmli_app.DB.news;
 
-import com.google.firebase.Timestamp;
-
 public class NewsItem {
     static public final String key = "News";
-    private long author;
-    private String url, text, title;
-    private Timestamp date;
+    private String id;
+    private String uid, url, text, title;
+    private String date;
 
-    public NewsItem() {}
+    public NewsItem() {
+    }
 
-    public NewsItem(long author, String url, Timestamp date, String text, String title) {
-        this.author = author;
+    public NewsItem(String id, String uid, String url, String date, String text, String title) {
+        this.id = id;
+        this.uid = uid;
         this.url = url;
         this.date = date;
         this.text = text;
         this.title = title;
     }
 
-    public long getAuthor() {
-        return author;
+    public String getId() {
+        return id;
     }
 
-    public void setAuthor(long author) {
-        this.author = author;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getURL() {
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getUrl() {
         return url;
     }
 
-    public void setURL(String URL) {
+    public void setUrl(String url) {
         this.url = url;
     }
 
-    public Timestamp getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -56,16 +64,5 @@ public class NewsItem {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    @Override
-    public String toString() {
-        return "NewsItem{" +
-                "author=" + author +
-                ", URL='" + url + '\'' +
-                ", text='" + text + '\'' +
-                ", title='" + title + '\'' +
-                ", date='" + date + '\'' +
-                '}';
     }
 }

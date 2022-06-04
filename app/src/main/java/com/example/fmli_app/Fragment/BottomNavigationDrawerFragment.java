@@ -17,25 +17,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.fmli_app.DB.news.NewsItem;
 import com.example.fmli_app.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Date;
 
 public class BottomNavigationDrawerFragment extends BottomSheetDialogFragment {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor sharedPreferencesEditor;
     DatabaseReference mDatabase;
+    FirebaseAuth mAuth;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -44,6 +43,7 @@ public class BottomNavigationDrawerFragment extends BottomSheetDialogFragment {
 
         // Подключение к базе данных
         mDatabase = FirebaseDatabase.getInstance().getReference(NewsItem.key);
+        mAuth = FirebaseAuth.getInstance();
 
         // Получение SharedPreferences
         sharedPreferences = getContext().getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
@@ -52,22 +52,11 @@ public class BottomNavigationDrawerFragment extends BottomSheetDialogFragment {
 
         nav_view.setNavigationItemSelectedListener((menuItem) -> {
             switch (menuItem.getItemId()) {
-                case R.id.app_bar_add_comm:
-                    //
-                    break;
-                case R.id.app_bar_add_notify:
-                    //
-                    break;
                 case R.id.app_bar_add_news:
-
-                    Timestamp timestamp = new Timestamp(new Date(System.currentTimeMillis()));
-
-                    NewsItem newsItem = new NewsItem(0, "", timestamp, getString(R.string.empty_text), getString(R.string.app_name));
-                    Toast.makeText(getContext(), "Вы успешно опубликовали статью", Toast.LENGTH_LONG).show();
-                    mDatabase.push().setValue(newsItem);
-                    break;
-                case R.id.app_bar_add_tag:
-                    //
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    // Create and show the dialog.
+                    DialogNewsFragment dialog = new DialogNewsFragment ();
+                    dialog.show(ft, "dialog");
                     break;
                 case R.id.app_bar_settings:
                     //

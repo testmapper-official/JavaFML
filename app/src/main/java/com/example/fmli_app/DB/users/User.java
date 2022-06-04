@@ -1,33 +1,35 @@
 package com.example.fmli_app.DB.users;
 
-import com.google.firebase.Timestamp;
-
 public class User {
-    private String password, birthday, about_me, avatar_url, banner_url, email, number;
-    private Timestamp date;
+    static public final String key = "Users";
+    private String id, nickname, about_me, avatar_url;
     private int permission;
 
-    public User() {}
+    public User() {
+    }
 
-    public User(String password, String email, String number, String about_me, String avatar_url,
-                String banner_url, Timestamp date, String birthday, int permission) {
-        this.password = password;
-        this.email = email;
-        this.number = number;
+    public User(String id, String nickname, String about_me, String avatar_url, int permission) {
+        this.id = id;
+        this.nickname = nickname;
         this.about_me = about_me;
-        this.date = date;
         this.avatar_url = avatar_url;
-        this.banner_url = banner_url;
-        this.birthday = birthday;
         this.permission = permission;
     }
 
-    public String getPassword() {
-        return password;
+    public String getId() {
+        return id;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getAbout_me() {
@@ -38,52 +40,12 @@ public class User {
         this.about_me = about_me;
     }
 
-    public void setDate(Timestamp date) {
-        this.date = date;
-    }
-
-    public Timestamp getDate() {
-        return date;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
     public String getAvatar_url() {
         return avatar_url;
     }
 
     public void setAvatar_url(String avatar_url) {
         this.avatar_url = avatar_url;
-    }
-
-    public String getBanner_url() {
-        return banner_url;
-    }
-
-    public void setBanner_url(String banner_url) {
-        this.banner_url = banner_url;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
     }
 
     public int getPermission() {
