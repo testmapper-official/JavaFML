@@ -4,14 +4,14 @@
     <string name="services">Заметки</string>
     <string name="notifications">Уведомления</string>
     <string name="profile">Профиль</string>
-    <string name="samplename"><i>@sample</i></string>
+    <string name="samplename"><i> </i></string>
     <string name="profiledescription"><b><i>О СЕБЕ</i></b></string>
     <string name="posts">СТАТЬИ</string>
     <string name="subscribed">ПОДПИСКИ</string>
     <string name="subscribers">ПОДПИСАНО</string>
     <string name="likes">НРАВИТСЯ</string>
     <string name="comments">КОММЕНТАРИИ</string>
-    <string name="validnumber">null</string>
+    <string name="validnumber"> </string>
     <string name="details_description">Нет данных</string>
     <string name="empty_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Phasellus rutrum, sem nec aliquet consequat, mauris odio pretium diam, sed ullamcorper
@@ -43,4 +43,5 @@
     <string name="content">Содержание</string>
     <string name="url_image">URL изображения</string>
     <string name="comment">Комментарий</string>
+    <string name="exit">Выйти из аккаунта</string>
 </resources>

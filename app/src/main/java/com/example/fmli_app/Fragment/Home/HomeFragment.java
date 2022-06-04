@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -73,8 +72,6 @@ public class HomeFragment extends Fragment {
 
         // Выведение системного уведомления при нажатии элемента фрагмента уведомлений
         newsView.setOnItemClickListener((adapterView, view1, i, l) -> {
-            Toast.makeText(getContext(), "123", Toast.LENGTH_SHORT).show();
-
             //Получаем объект класса Notes
             NewsItem newsItem = (NewsItem) adapterView.getAdapter().getItem(i);
 

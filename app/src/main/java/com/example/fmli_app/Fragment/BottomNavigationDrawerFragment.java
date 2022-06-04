@@ -5,6 +5,7 @@ import static com.example.fmli_app.Activity.SplashActivity.APP_PREFERENCES;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -17,11 +18,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.fmli_app.Activity.AuthActivity;
 import com.example.fmli_app.DB.news.NewsItem;
 import com.example.fmli_app.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -59,7 +62,11 @@ public class BottomNavigationDrawerFragment extends BottomSheetDialogFragment {
                     dialog.show(ft, "dialog");
                     break;
                 case R.id.app_bar_settings:
-                    //
+                    mAuth.signOut();
+                    Toast.makeText(getContext(), "Вы вышли из аккаунта", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), AuthActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    this.startActivity(intent);
                     break;
             }
             dismiss();
